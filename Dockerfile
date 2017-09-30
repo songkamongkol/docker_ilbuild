@@ -58,7 +58,7 @@ RUN dpkg --add-architecture i386 && \
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN echo "san-04.cal.ci.spirentcom.com:/tank/crosstools-int /export/crosstools nfs defaults 0 0" >> /etc/fstab && \
     mkdir -p /export/crosstools && \
-    mount /export/crosstools
+    mount /export/crosstools -o nolock
 RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 # fix compile error as documented here:
 # http://stackoverflow.com/questions/19181102/pyxml-install-memmove-does-not-exist-on-this-platform
