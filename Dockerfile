@@ -75,6 +75,9 @@ VOLUME /var/run/sshd
 RUN echo root:spirent | chpasswd && \
     sed -i 's/prohibit-password/yes/' /etc/ssh/sshd_config && \
     service ssh restart
+RUN wget http://artifactory.calenglab.spirentcom.com:8081/artifactory/generic-local/bllbldlnx/p4 && \
+    mv p4 /usr/local/bin/p4 && \
+    chmod a+x /usr/local/bin/p4
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/export/crosstools/sbtools/x86-linux-rh7.3/sb1-elf-2.5.1/bin:/export/crosstools/x86/pentium4/bin:/export/crosstools/x86/pentium3/bin:/export/crosstools/mvl31/ppc/405/bin:/export/crosstools/mips64/octeon_v2_be/bin:/export/crosstools/mips64/fp_be/bin:/export/crosstools/mips/mips2_fp_be/bin:/export/crosstools/mips/fp_be/bin"
 ENV PHX_CROSS_TOOLS=/export/crosstools
 ENV CCACHE_BASEDIR=/home
